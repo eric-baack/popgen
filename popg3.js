@@ -26,6 +26,7 @@ const g2minx = canvas.width * 0.55;
 
 
 function run_model() {
+    initialize_graphs();
     let pop_size1 = document.querySelector("#N1").value;
     let pop_size2 = document.querySelector("#N2").value;
     // When adding, these were adding text, not integers!
