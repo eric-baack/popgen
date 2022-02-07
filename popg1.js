@@ -132,11 +132,11 @@ function run_model() {
         }
     }
     ctx.fillStyle = 'black';
-    ctx.font = '24px georgia';
-    let fixmsg = "Fixed: " + fixct
-    let lossmsg = "Lost: " + lossct
-    ctx.fillText(fixmsg, gmaxx * .9, canvas.height * .05)
-    ctx.fillText(lossmsg, gmaxx * .9, canvas.height * .9)
+    ctx.font = '12px georgia';
+    let fixmsg = "Fixed: " + fixct;
+    let lossmsg = "Lost: " + lossct;
+    ctx.fillText(fixmsg, gmaxx * 0.9, canvas.height * 0.05);
+    ctx.fillText(lossmsg, gmaxx * 0.9, canvas.height * 0.9);
         
 }
 
@@ -161,13 +161,13 @@ function initialize_graph() {
 
     //label axes
     ctx.fillStyle = 'black';
-    ctx.font = '24px georgia';
-    ctx.fillText("Generations", gmaxx *.48, canvas.height * .9)
+    ctx.font = '12px georgia';
+    ctx.fillText("Generations", gmaxx * 0.48, canvas.height * 0.9);
     ctx.fillText("Blue line shows outcome without genetic drift", gmaxx *.35, canvas.height * .92)
 
 
     ctx.save();
-    ctx.translate(gminx * .2, gmaxy * .5);
+    ctx.translate(gminx * 0.2, gmaxy * 0.5);
     ctx.rotate(-Math.PI/2);
     ctx.textAlign = "center";
     ctx.fillText("f(A)", 0, 0);

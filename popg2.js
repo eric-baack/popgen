@@ -104,7 +104,7 @@ function run_model() {
         }
     }
     ctx.fillStyle = 'black';
-    ctx.font = '24px georgia';
+    ctx.font = '12px georgia';
     let remmsg = "Alleles remaining: " + (5 - fixct - lossct)
     ctx.fillText(remmsg, gmaxx * 0.8, canvas.height * 0.9);
 
@@ -131,7 +131,7 @@ function initialize_graph() {
 
     //label axes
     ctx.fillStyle = 'black';
-    ctx.font = '24px georgia';
+    ctx.font = '12px georgia';
     ctx.fillText("Generations", gmaxx *0.48, canvas.height * 0.9)
     ctx.fillText("Five alleles at one locus, each with starting frequency of 0.2", gmaxx *.35, canvas.height * 0.92);
     ctx.fillText("All genotypes have equivalent fitnesses.", gmaxx *0.35, canvas.height * 0.94);

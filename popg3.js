@@ -230,7 +230,7 @@ function initialize_graphs() {
 
     //label axes
     ctx.fillStyle = 'black';
-    ctx.font = '24px georgia';
+    ctx.font = '12px georgia';
     ctx.fillText("Generations", g1maxx *0.48, canvas.height * 0.97);
     ctx.fillText("Generations", g2maxx *0.78, canvas.height * 0.97);
     ctx.save();
