@@ -8,15 +8,15 @@
 'use strict';
 
 const canvas = document.querySelector('#myCanvas');
-//var width  = window.innerWidth;
-var width = 750;
+var width  = window.innerWidth;
+// var width = 750;
 canvas.width = width;
 if (width == 0) {
     width = screen.width; // for safari
 }
 
-//var height =  window.innerHeight;
-var height = 1330;
+var height =  window.innerHeight;
+// var height = 1330;
 if (height == 0) {
     height = screen.height; // for safari
 }
@@ -172,12 +172,12 @@ function initialize_graph() {
     //label axes
     ctx.fillStyle = 'black';
     //ctx.font = '12px georgia';
-    ctx.fillText("Generations", gmaxx * 0.48, canvas.height * 0.9);
-    ctx.fillText("Blue line shows outcome without genetic drift", gmaxx *.35, canvas.height * .92)
+    ctx.fillText("Generations", gmaxx * 0.48, height * 0.7);
+    ctx.fillText("Blue line shows outcome without genetic drift", gmaxx *0.1, height * 0.72);
 
 
     ctx.save();
-    ctx.translate(gminx * 0.2, gmaxy * 0.5);
+    ctx.translate(gminx * 0.4, gmaxy * 0.5);
     ctx.rotate(-Math.PI/2);
     ctx.textAlign = "center";
     ctx.fillText("f(A)", 0, 0);
@@ -185,7 +185,7 @@ function initialize_graph() {
 
     for (let j = 0; j <= 10; j++) {
         let i = j / 10;
-        ctx.fillText(i, gminx * 0.5, gmaxy - (i * (gmaxy - gminy) - 11));
+        ctx.fillText(i, gminx * 0.6, gmaxy - (i * (gmaxy - gminy) - 10/height));
     }
     // let years = 500;
     // let year_int = years / 10;
