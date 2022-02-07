@@ -8,16 +8,26 @@
 'use strict';
 
 const canvas = document.querySelector('#myCanvas');
-const width  = window.innerWidth;
+//var width  = window.innerWidth;
+var width = 750;
 canvas.width = width;
+if (width == 0) {
+    width = screen.width; // for safari
+}
 
-const height =  window.innerHeight;
+//var height =  window.innerHeight;
+var height = 1330;
+if (height == 0) {
+    height = screen.height; // for safari
+}
 const ctx = canvas.getContext('2d');
-const gmaxy = height * .65;
-const gminy = height * .05;
-const gmaxx = width * .9;
-const gminx = width * .1;
-canvas.height = height * .8;
+const gmaxy = height * 0.65;
+const gminy = height * 0.05;
+const gmaxx = width * 0.9;
+const gminx = width * 0.1;
+canvas.height = height * 0.8;
+var fontsz = 16 / 1000 * height;
+ctx.font = (fontsz|0) + 'px Georgia';
 var year_array = [];
 
 function run_model() {
@@ -132,7 +142,7 @@ function run_model() {
         }
     }
     ctx.fillStyle = 'black';
-    ctx.font = '12px georgia';
+    //ctx.font = '12px georgia';
     let fixmsg = "Fixed: " + fixct;
     let lossmsg = "Lost: " + lossct;
     ctx.fillText(fixmsg, gmaxx * 0.9, canvas.height * 0.05);
@@ -161,7 +171,7 @@ function initialize_graph() {
 
     //label axes
     ctx.fillStyle = 'black';
-    ctx.font = '12px georgia';
+    //ctx.font = '12px georgia';
     ctx.fillText("Generations", gmaxx * 0.48, canvas.height * 0.9);
     ctx.fillText("Blue line shows outcome without genetic drift", gmaxx *.35, canvas.height * .92)
 
