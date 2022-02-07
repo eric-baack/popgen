@@ -36,6 +36,13 @@ function run_model() {
     var p0 = 0.5;
     var pops = 5;
     var freq_array = [];
+    //add x axis labels to graph
+    let year_int = gens / 10;
+    for (let j = 0; j <= 10; j++) {
+        ctx.font = '12px georgia';
+        ctx.fillText(j*year_int, g1minx + j/10 * (g1maxx - g1minx) - 12, canvas.height * 0.93);
+        ctx.fillText(j*year_int, g2minx + j/10 * (g2maxx - g2minx) - 12, canvas.height * 0.93);
+    }
     // store frequencies in array by population, population, gen_ct
     for (let p = 0; p < 2; p++) {
         let g_array = []
@@ -224,8 +231,8 @@ function initialize_graphs() {
     //label axes
     ctx.fillStyle = 'black';
     ctx.font = '24px georgia';
-    ctx.fillText("Generations", g1maxx *0.48, canvas.height * 0.93);
-    ctx.fillText("Generations", g2maxx *0.78, canvas.height * 0.93);
+    ctx.fillText("Generations", g1maxx *0.48, canvas.height * 0.97);
+    ctx.fillText("Generations", g2maxx *0.78, canvas.height * 0.97);
     ctx.save();
     ctx.translate(g1minx * 0.2, g1maxy * 0.5);
     ctx.rotate(-Math.PI/2);
