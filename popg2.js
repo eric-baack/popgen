@@ -144,7 +144,7 @@ function initialize_graph() {
 
 
     ctx.save();
-    ctx.translate(gminx * 0.4, gmaxy * 0.5);
+    ctx.translate(gminx * 0.25, gmaxy * 0.5);
     ctx.rotate(-Math.PI/2);
     ctx.textAlign = "center";
     ctx.fillText("f(A)", 0, 0);
@@ -152,7 +152,7 @@ function initialize_graph() {
 
     for (let j = 1; j <= 10; j++) {
         let i = j / 10;
-        ctx.fillText(i, gminx * 0.6, gmaxy - (i * (gmaxy - gminy) - 10/height));
+        ctx.fillText(i, gminx * 0.4, gmaxy - (i * (gmaxy - gminy) - 10/height));
     }
     // let years = 500;
     // let year_int = years / 10;

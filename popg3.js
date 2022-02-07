@@ -240,7 +240,7 @@ function initialize_graphs() {
     ctx.fillText("Generations", g1maxx *0.48, canvas.height * 0.98);
     ctx.fillText("Generations", g2maxx *0.78, canvas.height * 0.98);
     ctx.save();
-    ctx.translate(g1minx * 0.4, g1maxy * 0.5);
+    ctx.translate(g1minx * 0.25, g1maxy * 0.5);
     ctx.rotate(-Math.PI/2);
     ctx.textAlign = "center";
     ctx.fillText("f(A)", 0, 0);
@@ -254,8 +254,8 @@ function initialize_graphs() {
 
     for (let j = 0; j <= 10; j++) {
         let i = j / 10;
-        ctx.fillText(i, g1minx * 0.6, g1maxy - (i * (g1maxy - g1miny) - 10/height));
-        ctx.fillText(i, g2minx * 0.93, g2maxy - (i * (g1maxy - g1miny) - 10/height));
+        ctx.fillText(i, g1minx * 0.4, g1maxy - (i * (g1maxy - g1miny) - 10/height));
+        ctx.fillText(i, g2minx * 0.92, g2maxy - (i * (g1maxy - g1miny) - 10/height));
     }
     // let years = 500;
     // let year_int = years / 10;
