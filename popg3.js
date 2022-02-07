@@ -9,10 +9,16 @@
 
 var year_array = [];
 const canvas = document.querySelector('#myCanvas');
-const width  = window.innerWidth;
+var width  = window.innerWidth;
 canvas.width = width;
+if (width == 0) {
+    width = screen.width; // for safari
+}
 
-const height = window.innerHeight;
+var height =  window.innerHeight;
+if (height == 0) {
+    height = screen.height; // for safari
+}
 canvas.height = height * 0.5;
 const ctx = canvas.getContext('2d');
 const g1maxy = canvas.height * 0.9;
@@ -23,6 +29,8 @@ const g2maxy = canvas.height * 0.9;
 const g2miny = canvas.height * 0.05;
 const g2maxx = canvas.width * 0.9;
 const g2minx = canvas.width * 0.55;
+var fontsz = 24 / 1000 * height;
+ctx.font = (fontsz|0) + 'px Georgia';
 
 
 function run_model() {
@@ -37,11 +45,10 @@ function run_model() {
     var pops = 5;
     var freq_array = [];
     //add x axis labels to graph
-    let year_int = gens / 10;
-    for (let j = 0; j <= 10; j++) {
-        ctx.font = '12px georgia';
-        ctx.fillText(j*year_int, g1minx + j/10 * (g1maxx - g1minx) - 12, canvas.height * 0.93);
-        ctx.fillText(j*year_int, g2minx + j/10 * (g2maxx - g2minx) - 12, canvas.height * 0.93);
+    let year_int = gens / 5;
+    for (let j = 0; j <= 5; j++) {
+        ctx.fillText(j*year_int, g1minx + j/5 * (g1maxx - g1minx) - 90/width, canvas.height * 0.94);
+        ctx.fillText(j*year_int, g2minx + j/5 * (g2maxx - g2minx) - 90/width, canvas.height * 0.94);
     }
     // store frequencies in array by population, population, gen_ct
     for (let p = 0; p < 2; p++) {
@@ -230,11 +237,10 @@ function initialize_graphs() {
 
     //label axes
     ctx.fillStyle = 'black';
-    ctx.font = '12px georgia';
-    ctx.fillText("Generations", g1maxx *0.48, canvas.height * 0.97);
-    ctx.fillText("Generations", g2maxx *0.78, canvas.height * 0.97);
+    ctx.fillText("Generations", g1maxx *0.48, canvas.height * 0.98);
+    ctx.fillText("Generations", g2maxx *0.78, canvas.height * 0.98);
     ctx.save();
-    ctx.translate(g1minx * 0.2, g1maxy * 0.5);
+    ctx.translate(g1minx * 0.4, g1maxy * 0.5);
     ctx.rotate(-Math.PI/2);
     ctx.textAlign = "center";
     ctx.fillText("f(A)", 0, 0);
@@ -248,8 +254,8 @@ function initialize_graphs() {
 
     for (let j = 0; j <= 10; j++) {
         let i = j / 10;
-        ctx.fillText(i, g1minx * 0.6, g1maxy - (i * (g1maxy - g1miny) - 11));
-        ctx.fillText(i, g2minx * 0.93, g2maxy - (i * (g1maxy - g1miny) - 11));
+        ctx.fillText(i, g1minx * 0.6, g1maxy - (i * (g1maxy - g1miny) - 10/height));
+        ctx.fillText(i, g2minx * 0.93, g2maxy - (i * (g1maxy - g1miny) - 10/height));
     }
     // let years = 500;
     // let year_int = years / 10;
@@ -260,13 +266,4 @@ function initialize_graphs() {
 
 window.onload = function() {
     initialize_graphs();
-};
-
-// next, generate vector of positions.  Use existing code for gen_ct, fA
-// translate gen_ct into x position:  xpos = gminx + (gmaxx - gminx) * (gen_ct / gen_max)
-// translate f(A) into Y position:  ypos = gminy - f(A) * (gmaxy - gminy)
-// This might work!
-
-function degToRad(degrees) {
-    return degrees * Math.PI / 180;
 };

@@ -9,14 +9,12 @@
 
 const canvas = document.querySelector('#myCanvas');
 var width  = window.innerWidth;
-// var width = 750;
 canvas.width = width;
 if (width == 0) {
     width = screen.width; // for safari
 }
 
 var height =  window.innerHeight;
-// var height = 1330;
 if (height == 0) {
     height = screen.height; // for safari
 }
@@ -26,7 +24,7 @@ const gminy = height * 0.05;
 const gmaxx = width * 0.9;
 const gminx = width * 0.1;
 canvas.height = height * 0.8;
-var fontsz = 16 / 1000 * height;
+var fontsz = 24 / 1000 * height;
 ctx.font = (fontsz|0) + 'px Georgia';
 var year_array = [];
 
@@ -49,10 +47,11 @@ function run_model() {
         freq_array.push(p_array)
     }
  
-    let year_int = gens / 10;
+    let year_int = gens / 5;
     for (let j = 0; j <= 10; j++) {
-        ctx.fillText(j*year_int, gminx + j/10 * (gmaxx - gminx) - 12, canvas.height * .85);
+        ctx.fillText(j*year_int, gminx + j/5 * (gmaxx - gminx) - 12, canvas.height * 0.85);        
     }
+    ctx.fillText("Blue line shows outcome without genetic drift", gmaxx *0.1, height * 0.72);
     for (let k = 0; k < pops; k++) {
         freq_array[k][0] = p0;
     }
@@ -173,7 +172,7 @@ function initialize_graph() {
     ctx.fillStyle = 'black';
     //ctx.font = '12px georgia';
     ctx.fillText("Generations", gmaxx * 0.48, height * 0.7);
-    ctx.fillText("Blue line shows outcome without genetic drift", gmaxx *0.1, height * 0.72);
+    
 
 
     ctx.save();
@@ -183,8 +182,8 @@ function initialize_graph() {
     ctx.fillText("f(A)", 0, 0);
     ctx.restore();
 
-    for (let j = 0; j <= 10; j++) {
-        let i = j / 10;
+    for (let j = 0; j <= 5; j++) {
+        let i = j / 5;
         ctx.fillText(i, gminx * 0.6, gmaxy - (i * (gmaxy - gminy) - 10/height));
     }
     // let years = 500;
@@ -196,13 +195,4 @@ function initialize_graph() {
 
 window.onload = function() {
     initialize_graph();
-};
-
-// next, generate vector of positions.  Use existing code for gen_ct, fA
-// translate gen_ct into x position:  xpos = gminx + (gmaxx - gminx) * (gen_ct / gen_max)
-// translate f(A) into Y position:  ypos = gminy - f(A) * (gmaxy - gminy)
-// This might work!
-
-function degToRad(degrees) {
-    return degrees * Math.PI / 180;
 };

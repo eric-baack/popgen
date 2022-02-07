@@ -8,16 +8,24 @@
 'use strict';
 
 const canvas = document.querySelector('#myCanvas');
-const width  = window.innerWidth;
+var width  = window.innerWidth;
 canvas.width = width;
+if (width == 0) {
+    width = screen.width; // for safari
+}
 
-const height =  window.innerHeight;
+var height =  window.innerHeight;
+if (height == 0) {
+    height = screen.height; // for safari
+}
 const ctx = canvas.getContext('2d');
-const gmaxy = height * .65;
-const gminy = height * .05;
-const gmaxx = width * .9;
-const gminx = width * .1;
-canvas.height = height * .8;
+const gmaxy = height * 0.65;
+const gminy = height * 0.05;
+const gmaxx = width * 0.9;
+const gminx = width * 0.1;
+canvas.height = height * 0.8;
+var fontsz = 24 / 1000 * height;
+ctx.font = (fontsz|0) + 'px Georgia';
 var year_array = [];
 
 function run_model() {
@@ -32,9 +40,9 @@ function run_model() {
         freq_array.push(p_array);
     }
  
-    let year_int = gens / 10;
-    for (let j = 0; j <= 10; j++) {
-        ctx.fillText(j*year_int, gminx + j/10 * (gmaxx - gminx) - 12, canvas.height * .85);
+    let year_int = gens / 5;
+    for (let j = 0; j <= 5; j++) {
+        ctx.fillText(j*year_int, gminx + j/5 * (gmaxx - gminx) - 12, canvas.height * 0.85);
     }
     
     let fA = p0;
@@ -92,9 +100,9 @@ function run_model() {
             ctx.stroke();
         } 
     }
-    let fixct = 0
-    let lossct = 0
-    let polyct = 0
+    let fixct = 0;
+    let lossct = 0;
+    let polyct = 0;
     for (let q = 0; q < 5; q++) {
         if (freq_array[gens-1][q] == 1){
             fixct ++;
@@ -104,9 +112,8 @@ function run_model() {
         }
     }
     ctx.fillStyle = 'black';
-    ctx.font = '12px georgia';
     let remmsg = "Alleles remaining: " + (5 - fixct - lossct)
-    ctx.fillText(remmsg, gmaxx * 0.8, canvas.height * 0.9);
+    ctx.fillText(remmsg, gmaxx * 0.8, height * 0.7);
 
 }
 
@@ -131,14 +138,13 @@ function initialize_graph() {
 
     //label axes
     ctx.fillStyle = 'black';
-    ctx.font = '12px georgia';
-    ctx.fillText("Generations", gmaxx *0.48, canvas.height * 0.9)
-    ctx.fillText("Five alleles at one locus, each with starting frequency of 0.2", gmaxx *.35, canvas.height * 0.92);
-    ctx.fillText("All genotypes have equivalent fitnesses.", gmaxx *0.35, canvas.height * 0.94);
+    ctx.fillText("Generations", gmaxx *0.48, height * 0.7);
+    ctx.fillText("Five alleles at one locus, each with starting frequency of 0.2", gmaxx *0.2, height * 0.72);
+    ctx.fillText("All genotypes have equivalent fitnesses.", gmaxx *0.2, height * 0.74);
 
 
     ctx.save();
-    ctx.translate(gminx * .2, gmaxy * .5);
+    ctx.translate(gminx * 0.4, gmaxy * 0.5);
     ctx.rotate(-Math.PI/2);
     ctx.textAlign = "center";
     ctx.fillText("f(A)", 0, 0);
@@ -146,7 +152,7 @@ function initialize_graph() {
 
     for (let j = 1; j <= 10; j++) {
         let i = j / 10;
-        ctx.fillText(i, gminx * 0.5, gmaxy - (i * (gmaxy - gminy) - 11));
+        ctx.fillText(i, gminx * 0.6, gmaxy - (i * (gmaxy - gminy) - 10/height));
     }
     // let years = 500;
     // let year_int = years / 10;
@@ -157,13 +163,4 @@ function initialize_graph() {
 
 window.onload = function() {
     initialize_graph();
-};
-
-// next, generate vector of positions.  Use existing code for gen_ct, fA
-// translate gen_ct into x position:  xpos = gminx + (gmaxx - gminx) * (gen_ct / gen_max)
-// translate f(A) into Y position:  ypos = gminy - f(A) * (gmaxy - gminy)
-// This might work!
-
-function degToRad(degrees) {
-    return degrees * Math.PI / 180;
 };
