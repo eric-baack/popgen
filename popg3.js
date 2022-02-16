@@ -239,6 +239,8 @@ function initialize_graphs() {
     ctx.fillStyle = 'black';
     ctx.fillText("Generations", g1maxx *0.48, canvas.height * 0.98);
     ctx.fillText("Generations", g2maxx *0.78, canvas.height * 0.98);
+    ctx.fillText("Population 1", g1maxx *0.48, canvas.height * 0.035);
+    ctx.fillText("Population 2", g2maxx *0.78, canvas.height * 0.035);
     ctx.save();
     ctx.translate(g1minx * 0.25, g1maxy * 0.5);
     ctx.rotate(-Math.PI/2);
