@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Popge2 webpage.  Feb 2022, E. Baack  -->
+   <!-- Goal: work with age-structured populations using sea turtles-->
+   <!-- Simplify model:  hatchlings, juveniles, adults -->
+   <!-- uses bootstrap  -->
+   <!-- Add photo of sea turtle to upper right -->
+   <!-- Add output of final turtle population -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sea turtle population ecology simulator</title>
+    <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
+    <script src="pope2.js"></script>
+</head>
+
+<body>
+    <div>Set population parameters</div>
+    <div class = "mui-form-inline">
+      <label for="Hatchling_survival">Hatchling Survival (0.0 to 1.0)</label>
+      <input type="number" class = "form-control" min= 0.00 max= 1.00 id="Hatchling_survival" value = 0.62>
+      <label for="Hatchling_reproduction">Hatchling reproduction (0)</label>
+      <input type="number" class = "form-control" min=0 max=0 id="Hatchling_reproduction" value = 0 readonly>  
+      <label for="Hatching_count">Hatchling population (integer)</label>
+      <input type="number" class = "form-control" min=0 max=1000 id="Hatchling_count" value = 200>
+    </div> 
+    <div class = "mui-form-inline">
+      <label for="Juvenile_survival">Juvenile survival (0.0 to 1.0)</label>
+      <input type="number" class = "form-control" min= 0.00 max= 1.00 id="Juvenile_survival" value = 0.45>
+      <label for="Juvenile_reproduction">Juvenile reproduction (0)</label>
+      <input type="number" class = "form-control" min=0 max=0 id="Juvenile_reproduction" value = 0 readonly> 
+      <label for="Juvenile_count">Juvenile population (integer)</label>
+      <input type="number" class = "form-control" min=0 max=1000 id="Juvenile_count" value = 780>
+    </div> 
+    <div class = "mui-form-inline">
+      <label for="Adult_survival">Adult survival (0.0 to 1.0)</label>
+      <input type="number" class = "form-control" min= 0.00 max= 1.00 id="Adult_survival" value = 0.8>
+      <label for="Adult_reproduction">Adult reproduction (0)</label>
+      <input type="number" class = "form-control" min=1 max=100 id="Adult_reproduction" value = 68> 
+      <label for="Adult_count">Adult population (integer)</label>
+      <input type="number" class = "form-control" min=0 max=100 id="Adult_count" value = 20>
+    </div> 
+    <button class="mui-btn mui-btn--primary" type="button"  id = "Run" onclick="run_model()">Run</button>
+ 
+    <div>
+      <canvas id = "myCanvas"></canvas> 
+    </div>
+</body>
+
+<footer>
+    <p> Green sea turtles can take 30 years to mature, so only 3% of juveniles become adults each year.</p>
+    <p> Adult females reproduce every 3-5 years, and lay 40-80 eggs at a time.</p>
+    <p> The carrying capacity for adults has been set to 10000 turtles, and the juvenile K at 20000 turtles</p>
+    <p> 2022 by Eric Baack, Luther College.</p>
+</footer>
+
