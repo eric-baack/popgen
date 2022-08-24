@@ -197,7 +197,7 @@ function run_model() {
         let changet = j*change_int;
         let changets = changet.toFixed(1);
        ctx.fillText(popts, g2minx + j/5 * (g2maxx - g2minx) - 12, canvas.height * .95);
-       ctx.fillText(changets, g2minx * 0.92, g2maxy - (j * (g2maxy - g2miny)/5 - 5/height));
+       ctx.fillText(changets, g2minx * 0.9, g2maxy - (j * (g2maxy - g2miny)/5 - 5/height));
     }
     lasty = g2maxy;
     for (let g = 1; g <= maxpopax; g++) {
@@ -227,7 +227,7 @@ function run_model() {
         let changet = j*change_int;
         let changets = changet.toFixed(3);
         ctx.fillText(popts, g3minx + j/5 * (g3maxx - g3minx) - 12, canvas.height * .95);
-        ctx.fillText(changets, g3minx * 0.94, g3maxy - (j * (g3maxy - g3miny)/5 - 5/height));
+        ctx.fillText(changets, g3minx * 0.9, g3maxy - (j * (g3maxy - g3miny)/5 - 5/height));
      }
      lasty = g3maxy;
      for (let g = 0; g <= maxpopax; g++){
