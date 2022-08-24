@@ -163,7 +163,7 @@ function run_model() {
     }
     let pop_int = maxpopax / 5;
     for (let j = 0; j <= 5; j++) {
-        ctx.fillText(j * pop_int, g1minx * 0.4, g1maxy - (j * (g1maxy - g1miny)/10 - 10/height));
+        ctx.fillText(j * pop_int, g1minx * 0.3, g1maxy - (j * (g1maxy - g1miny)/5 - 5/height));
     }
     for (let g = 1; g <= 500; g++) {
         let lastf = pop_size[g-1];
@@ -183,7 +183,7 @@ function run_model() {
     }
 
     // then dN/dt vs N.  use Maxpopax for X; use N/2 calc for maxY
-    pop_int = maxpopax / 10;
+    pop_int = maxpopax / 5;
     if (mtype == "Logistic"){
         max_change = (pop_K / 2) * 0.5 * pop_r;
     } else {
@@ -227,7 +227,7 @@ function run_model() {
         let changet = j*change_int;
         let changets = changet.toFixed(3);
         ctx.fillText(popts, g3minx + j/5 * (g3maxx - g3minx) - 12, canvas.height * .95);
-        ctx.fillText(changets, g3minx * 0.9, g3maxy - (j * (g3maxy - g3miny)/5 - 5/height));
+        ctx.fillText(changets, g3minx * 0.94, g3maxy - (j * (g3maxy - g3miny)/5 - 5/height));
      }
      lasty = g3maxy;
      for (let g = 0; g <= maxpopax; g++){
