@@ -149,9 +149,9 @@ function run_model() {
         }
     }
     let years = 500;
-    let year_int = years / 10;
-    for (let j = 0; j <= 10; j++) {
-       ctx.fillText(j*year_int, g1minx + j/10 * (g1maxx - g1minx) - 12, canvas.height * .95);
+    let year_int = years / 5;
+    for (let j = 0; j <= 5; j++) {
+       ctx.fillText(j*year_int, g1minx + j/5 * (g1maxx - g1minx) - 12, canvas.height * .95);
     }
     let maxpop = Math.max(...pop_size);
     console.log(maxpop);
@@ -161,8 +161,8 @@ function run_model() {
         let pop_pwr = Math.floor(Math.log10(maxpop));
         maxpopax = (Math.floor(maxpop /(10** pop_pwr)) +  1) * (10**pop_pwr);
     }
-    let pop_int = maxpopax / 10;
-    for (let j = 0; j <= 10; j++) {
+    let pop_int = maxpopax / 5;
+    for (let j = 0; j <= 5; j++) {
         ctx.fillText(j * pop_int, g1minx * 0.4, g1maxy - (j * (g1maxy - g1miny)/10 - 10/height));
     }
     for (let g = 1; g <= 500; g++) {
@@ -190,14 +190,14 @@ function run_model() {
         max_change = maxpopax * pop_r;
     }
  
-    let change_int = max_change / 10;
-    for (let j = 0; j <= 10; j++) {
+    let change_int = max_change / 5;
+    for (let j = 0; j <= 5; j++) {
         let popt = j*pop_int;
         let popts = popt.toFixed(0);
         let changet = j*change_int;
         let changets = changet.toFixed(1);
-       ctx.fillText(popts, g2minx + j/10 * (g2maxx - g2minx) - 12, canvas.height * .95);
-       ctx.fillText(changets, g2minx * 0.92, g2maxy - (j * (g2maxy - g2miny)/10 - 10/height));
+       ctx.fillText(popts, g2minx + j/5 * (g2maxx - g2minx) - 12, canvas.height * .95);
+       ctx.fillText(changets, g2minx * 0.92, g2maxy - (j * (g2maxy - g2miny)/5 - 5/height));
     }
     lasty = g2maxy;
     for (let g = 1; g <= maxpopax; g++) {
@@ -220,14 +220,14 @@ function run_model() {
 
     // then 1/N dN/dt.
     max_p_change = pop_r;  
-    change_int = max_p_change / 10;
-    for (let j = 0; j <= 10; j++) {
+    change_int = max_p_change / 5;
+    for (let j = 0; j <= 5; j++) {
         let popt = j*pop_int;
         let popts = popt.toFixed(0);
         let changet = j*change_int;
         let changets = changet.toFixed(3);
-        ctx.fillText(popts, g3minx + j/10 * (g3maxx - g3minx) - 12, canvas.height * .95);
-        ctx.fillText(changets, g3minx * 0.94, g3maxy - (j * (g3maxy - g3miny)/10 - 10/height));
+        ctx.fillText(popts, g3minx + j/5 * (g3maxx - g3minx) - 12, canvas.height * .95);
+        ctx.fillText(changets, g3minx * 0.94, g3maxy - (j * (g3maxy - g3miny)/5 - 5/height));
      }
      lasty = g3maxy;
      for (let g = 0; g <= maxpopax; g++){
